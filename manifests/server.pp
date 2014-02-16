@@ -26,9 +26,9 @@ class zabbix::server (
   }
   package { 'zabbix-server-mysql':
     notify  => Service['zabbix-server'],
-    require => Class['zabbix'],
+    require => [Class['zabbix'],Apt::Source["dotdeb"]]
   }
-  package { 'zabbix-frontend-php': }
+  package { 'zabbix-frontend-php': require => Apt::Source["dotdeb"]}
   service { 'zabbix-server':
     ensure     => running,
     enable     => true,

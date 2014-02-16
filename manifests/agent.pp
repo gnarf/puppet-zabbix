@@ -3,10 +3,10 @@ class zabbix::agent (
   $zabbix_server
 ) inherits zabbix {
   include zabbix::params
-  
+
   $zabbix_userparameter_config_dir = "${zabbix::params::zabbix_userparameter_config_dir}"
   $zabbix_agentd_conf              = "${zabbix::params::zabbix_agentd_conf}"
-  
+
   file {
     $zabbix_config_dir:
       ensure  => directory,
@@ -60,6 +60,7 @@ class zabbix::agent (
 
   package { "zabbix-agent":
     ensure => installed,
+    require => Apt::Source["dotdeb"]
   }
 
   file { $zabbix_userparameter_config_dir:
