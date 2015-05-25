@@ -79,10 +79,10 @@ LogRemoteCommands=1
 # Mandatory: yes
 # Default:
 # Server=
-<% if zabbix_proxy -%>
-Server=<%= zabbix_proxy %>, <%= zabbix_server %>
+<% if @zabbix_proxy -%>
+Server=<%= @zabbix_proxy %>, <%= @zabbix_server %>
 <% else -%>
-Server=<%= zabbix_server %>
+Server=<%= @zabbix_server %>
 <% end -%>
 
 ### Option: Hostname
@@ -93,7 +93,7 @@ Server=<%= zabbix_server %>
 # Mandatory: no
 # Default:
 # Hostname=
-Hostname=<%= fqdn %>
+Hostname=<%= @fqdn %>
 
 ### Option: HostnameItem
 #	Item used for generating Hostname if it is undefined.
@@ -117,7 +117,7 @@ Hostname=<%= fqdn %>
 # Mandatory: no
 # Default:
 # ListenIP=0.0.0.0
-ListenIP=<%= ipaddress %>
+ListenIP=<%= @ipaddress %>
 
 ### Option: DisablePassive
 #	Disable passive checks. The agent will not listen on any TCP port.
@@ -225,7 +225,7 @@ ListenIP=<%= ipaddress %>
 
 # Include=/etc/zabbix/zabbix_agentd.userparams.conf
 # Include=/etc/zabbix/zabbix_agentd/
-Include=<%= zabbix_userparameter_config_dir %>
+Include=<%= @zabbix_userparameter_config_dir %>
 
 ####### USER-DEFINED MONITORED PARAMETERS #######
 
